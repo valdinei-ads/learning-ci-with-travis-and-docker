@@ -28,6 +28,7 @@ before_script:
   # - php artisan migrate
 script:
     - ls -a
+    - docker ps
 #   - docker exec -t micro-videos-app composer install
 #   - docker exec -t micro-videos-app cp .env.example .env
 #   - docker exec -t micro-videos-app php /var/www/artisan key:generate
