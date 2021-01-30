@@ -1,15 +1,15 @@
 version: '3'
 
-services: 
+services:
   app:
     build: ./.docker/app/.
     container_name: micro-videos-app
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
-    volumes: 
+    # entrypoint: dockerize -wait tcp://db:3306 -timeout 40s ./.docker/entrypoint.sh
+    volumes:
       - ./:/var/www
-    networks: 
+    networks:
       - app-network
-    depends_on: 
+    depends_on:
       - db
       - redis
 
@@ -18,11 +18,11 @@ services:
     container_name: micro-videos-nginx
     restart: always
     tty: true
-    ports: 
+    ports:
       - "8000:80"
-    volumes: 
+    volumes:
       - ./:/var/www
-    networks: 
+    networks:
       - app-network
 
   db:
@@ -30,21 +30,21 @@ services:
     container_name: micro-videos-db
     restart: always
     tty: true
-    ports: 
+    ports:
       - "33006:3306"
-    volumes: 
+    volumes:
       - ./.docker/dbdata:/var/lib/mysql
-    environment: 
+    environment:
       - MYSQL_DATABASE=code_micro_videos
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=root
-    networks: 
+    networks:
       - app-network
 
   redis:
     image: redis:alpine
     container_name: micro-videos-redis
-    expose: 
+    expose:
       - 6379
     networks:
       - app-network
