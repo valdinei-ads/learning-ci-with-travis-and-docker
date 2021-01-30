@@ -14,7 +14,7 @@ services:
   - docker
 
 before_script:
-  - docker build -t docker-composer ./docker/docker-compose/dockerfile/.
+  - docker build -t docker-composer ./docker/docker-compose/.
   - docker run -t docker-composer version
   # - sudo rm -rf /usr/local/bin/docker-compose
   # - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
