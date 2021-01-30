@@ -20,14 +20,14 @@ before_script:
   - sudo mv docker-compose /usr/local/bin
   # - docker-compose up -d
   # - docker-compose ps
-  - ls
+
   # - apt-get install docker-compose
   # - cp .env.example .env
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
-# script:
-
+script:
+    - ls
 #   - docker exec -t micro-videos-app composer install
 #   - docker exec -t micro-videos-app cp .env.example .env
 #   - docker exec -t micro-videos-app php /var/www/artisan key:generate
