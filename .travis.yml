@@ -18,14 +18,14 @@ before_script:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-
+  - docker-compose up -d
   # - apt-get install docker-compose
   # - cp .env.example .env
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
 script:
-  - docker-compose up -d
+
   - docker exec -t micro-videos-app composer install
   - docker exec -t micro-videos-app cp .env.example .env
   - docker exec -t micro-videos-app php /var/www/artisan key:generate
