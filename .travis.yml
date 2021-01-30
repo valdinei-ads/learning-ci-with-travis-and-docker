@@ -20,7 +20,7 @@ before_script:
   - sudo mv docker-compose /usr/local/bin
   # - docker-compose up -d
   # - docker-compose ps
-  - docker-compose
+  - ls
   # - apt-get install docker-compose
   # - cp .env.example .env
   # - composer install
