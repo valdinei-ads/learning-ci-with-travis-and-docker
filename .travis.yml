@@ -10,6 +10,8 @@ dist: focal
 env:
   - DOCKER_COMPOSE_VERSION=1.25.5
 
+sudo: required
+
 services:
   - docker
 
