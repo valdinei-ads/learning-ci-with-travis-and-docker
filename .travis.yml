@@ -24,15 +24,12 @@ before_script:
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
-# script:
-
-    # - ls -a
-    # - docker ps
-#   - docker exec -t micro-videos-app composer install
-#   - docker exec -t micro-videos-app cp .env.example .env
-#   - docker exec -t micro-videos-app php /var/www/artisan key:generate
-#   - docker exec -t micro-videos-app php /var/www/artisan migrate
-#   - docker exec -t micro-videos-app php /var/www/vendor/bin/phpunit -c /var/www/phpunit.xml
+script:
+  - docker exec -t micro-videos-app composer install
+  - docker exec -t micro-videos-app cp .env.example .env
+  - docker exec -t micro-videos-app php /var/www/artisan key:generate
+  - docker exec -t micro-videos-app php /var/www/artisan migrate
+  - docker exec -t micro-videos-app php /var/www/vendor/bin/phpunit -c /var/www/phpunit.xml
 
 # after_success:
 #   - ./scripts/dotnet-publish.sh
