@@ -23,12 +23,14 @@ before_script:
   - docker-compose up -d
 
 
+
   # - apt-get install docker-compose
   # - cp .env.example .env
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
 script:
+  - sudo chmod +r composer.json
   - sudo docker exec -t micro-videos-app composer install
   - ls -l
   # - sudo docker exec -t micro-videos-app composer install
