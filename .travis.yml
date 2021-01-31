@@ -45,9 +45,9 @@ jobs:
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
-script:
+# script:
     # - ls -a
-    - docker ps
+    # - docker ps
 #   - docker exec -t micro-videos-app composer install
 #   - docker exec -t micro-videos-app cp .env.example .env
 #   - docker exec -t micro-videos-app php /var/www/artisan key:generate
