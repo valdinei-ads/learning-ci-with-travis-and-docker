@@ -4,7 +4,7 @@ dist: focal
 #     - master
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
+  - _DOCKER_COMPOSE_VERSION=1.4.2
 
 services:
   - docker
@@ -13,7 +13,7 @@ jobs:
   include:
     - stage: building docker-composer image
       script:
-        - docker build -t docker-composer ./.docker/docker-composer/.
+        - docker build --build-arg DOCKER_COMPOSE_VERSION=${_DOCKER_COMPOSE_VERSION} -t docker-composer ./.docker/docker-composer/.
 
     - stage: Runnig docker-composer image
       script:
