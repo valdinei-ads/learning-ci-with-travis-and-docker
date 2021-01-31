@@ -29,6 +29,7 @@ before_script:
   # - php artisan key:generate
   # - php artisan migrate
 script:
+  - sudo docker exec -t micro-videos-app composer install
   - ls -l
   # - sudo docker exec -t micro-videos-app composer install
   # - sudo docker exec -t micro-videos-app cp .env.example .env
