@@ -21,6 +21,7 @@ before_script:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
+  - ls -l
   - sudo docker exec -t micro-videos-app composer install
   - sudo docker exec -t micro-videos-app cp .env.example .env
   # - apt-get install docker-compose
