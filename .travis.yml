@@ -21,8 +21,8 @@ before_script:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
-  - chown -R www-data:www-data .
   - sudo chown -R $USER composer.json
+  - chown -R www-data:www-data .
   # - sudo chown -R $USER composer.lock
   - sudo docker exec -t micro-videos-app composer install
   - ls -l
