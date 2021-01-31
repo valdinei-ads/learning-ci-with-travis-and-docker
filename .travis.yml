@@ -13,10 +13,24 @@ env:
 services:
   - docker
 
-before_script:
-  - docker build ./.docker/docker-compose/. -t docker-composer
-  - docker images
-  - docker run -t docker-composer
+jobs:
+  include:
+    - stage: building docker-composer image
+      script:
+        - docker build -t valdinei/docker-composer ./.docker/docker-composer/.
+
+    - stage: Runnig docker-composer image
+      script:
+        - docker run --rm valdinei/docker-composer up -d
+
+    - stage: Runnig docker-composer ps
+      script:
+        - docker run --rm valdinei/docker-composer ps
+
+# before_script:
+#   - docker build ./.docker/docker-compose/. -t docker-composer
+#   - docker images
+#   - docker run -t docker-composer
   # - docker ps
   # - sudo rm -rf /usr/local/bin/docker-compose
   # - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -32,7 +46,7 @@ before_script:
   # - php artisan key:generate
   # - php artisan migrate
 script:
-    - ls -a
+    # - ls -a
     - docker ps
 #   - docker exec -t micro-videos-app composer install
 #   - docker exec -t micro-videos-app cp .env.example .env
