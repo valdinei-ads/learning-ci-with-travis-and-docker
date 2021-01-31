@@ -13,15 +13,15 @@ jobs:
   include:
     - stage: building docker-composer image
       script:
-        - docker build -t valdinei/docker-composer ./.docker/docker-composer/.
+        - docker build -t docker-composer ./.docker/docker-composer/.
 
     - stage: Runnig docker-composer image
       script:
-        - docker run valdinei/docker-composer up -d
+        - docker run docker-composer up -d
 
     - stage: Runnig docker-composer ps
       script:
-        - docker run valdinei/docker-composer ps
+        - docker run docker-composer ps
 
       # language: php
       # php:
