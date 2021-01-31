@@ -30,7 +30,7 @@ before_script:
   # - php artisan key:generate
   # - php artisan migrate
 script:
-  - sudo chown -R $USER ~/.composer
+  - sudo chown -R $USER composer.json
   - sudo docker exec -t micro-videos-app composer install
   - ls -l
   # - sudo docker exec -t micro-videos-app composer install
