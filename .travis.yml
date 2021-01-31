@@ -22,14 +22,6 @@ before_script:
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
 
-
-
-  # - apt-get install docker-compose
-  # - cp .env.example .env
-  # - composer install
-  # - php artisan key:generate
-  # - php artisan migrate
-script:
   - sudo chown -R $USER composer.json
   # - sudo chown -R $USER composer.lock
   - sudo docker exec -t micro-videos-app composer install
@@ -39,6 +31,22 @@ script:
   - sudo docker exec -t micro-videos-app php artisan key:generate
   - sudo docker exec -t micro-videos-app php artisan migrate
   - sudo docker exec -t micro-videos-app php vendor/bin/phpunit -c phpunit.xml
+
+  # - apt-get install docker-compose
+  # - cp .env.example .env
+  # - composer install
+  # - php artisan key:generate
+  # - php artisan migrate
+script:
+  # - sudo chown -R $USER composer.json
+  # - sudo chown -R $USER composer.lock
+  # - sudo docker exec -t micro-videos-app composer install
+  # - ls -l
+  # - sudo docker exec -t micro-videos-app composer install
+  # - sudo docker exec -t micro-videos-app cp .env.example .env
+  # - sudo docker exec -t micro-videos-app php artisan key:generate
+  # - sudo docker exec -t micro-videos-app php artisan migrate
+  # - sudo docker exec -t micro-videos-app php vendor/bin/phpunit -c phpunit.xml
 
 # after_success:
 #   - ./scripts/dotnet-publish.sh
