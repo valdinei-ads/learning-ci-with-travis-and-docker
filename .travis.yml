@@ -1,45 +1,24 @@
+language: php
+php:
+  - 7.3
+  - 8.0
 dist: focal
 # branches:
 #   only:
 #     - master
-
 env:
-  - _DOCKER_COMPOSE_VERSION=1.4.2
+  - DOCKER_COMPOSE_VERSION=1.25.5
 
 services:
   - docker
 
-jobs:
-  include:
-    # - stage: building docker-composer image
-    #   script:
-    #     - docker build --build-arg DOCKER_COMPOSE_VERSION=${_DOCKER_COMPOSE_VERSION} -t docker-composer ./.docker/docker-composer/.
-
-    - stage: Runnig docker-composer image
-      script:
-        - docker run docker-composer up -d
-
-    - stage: Runnig docker-composer ps
-      script:
-        - docker run docker-composer ps
-
-      # language: php
-      # php:
-      #   - 7.3
-      #   - 8.0
-
-# before_script:
-#   - docker build ./.docker/docker-compose/. -t docker-composer
-#   - docker images
-#   - docker run -t docker-composer
-  # - docker ps
-  # - sudo rm -rf /usr/local/bin/docker-compose
-  # - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  # - chmod +x docker-compose
-  # - sudo mv docker-compose /usr/local/bin
+before_script:
+  - sudo rm -rf /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
   # - docker-compose --verbose up -d
   # - docker-compose ps
-
 
   # - apt-get install docker-compose
   # - cp .env.example .env
