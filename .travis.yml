@@ -21,15 +21,15 @@ before_script:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
-  - ls -l
-  - sudo docker exec -t micro-videos-app composer install
-  - sudo docker exec -t micro-videos-app cp .env.example .env
+
+
   # - apt-get install docker-compose
   # - cp .env.example .env
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
 script:
+  - ls -l
   # - sudo docker exec -t micro-videos-app composer install
   # - sudo docker exec -t micro-videos-app cp .env.example .env
   - sudo docker exec -t micro-videos-app php /var/www/artisan key:generate
