@@ -33,9 +33,9 @@ script:
   - ls -l
   # - sudo docker exec -t micro-videos-app composer install
   # - sudo docker exec -t micro-videos-app cp .env.example .env
-  - sudo docker exec -t micro-videos-app php /var/www/artisan key:generate
-  - sudo docker exec -t micro-videos-app php /var/www/artisan migrate
-  - sudo docker exec -t micro-videos-app php /var/www/vendor/bin/phpunit -c /var/www/phpunit.xml
+  - sudo docker exec -t micro-videos-app php artisan key:generate
+  - sudo docker exec -t micro-videos-app php artisan migrate
+  - sudo docker exec -t micro-videos-app php vendor/bin/phpunit -c phpunit.xml
 
 # after_success:
 #   - ./scripts/dotnet-publish.sh
