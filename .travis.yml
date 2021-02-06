@@ -23,6 +23,7 @@ before_install:
   - docker-compose up -d
   - sudo touch composer.lock
   - sudo docker exec -t micro-videos-app composer install
+  - sudo docker images
 
 before_script:
   # - sudo chown -R $USER composer.json
