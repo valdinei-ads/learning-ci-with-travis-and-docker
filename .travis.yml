@@ -15,17 +15,19 @@ sudo: required
 services:
   - docker
 
-before_script:
+before_install:
   - sudo rm -rf /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d
   - sudo touch composer.lock
+- sudo docker exec -t micro-videos-app composer install
+
+before_script:
   # - sudo chown -R $USER composer.json
   # - sudo chown -R $USER composer.lock
   - sudo docker exec -t micro-videos-app composer install
-  - ls -l
   # - sudo docker exec -t micro-videos-app composer install
   # - sudo docker exec -t micro-videos-app cp .env.example .env
   - sudo docker exec -t micro-videos-app php artisan key:generate
@@ -37,6 +39,7 @@ before_script:
   # - composer install
   # - php artisan key:generate
   # - php artisan migrate
+
 script:
   # - sudo chown -R $USER composer.json
   # - sudo chown -R $USER composer.lock

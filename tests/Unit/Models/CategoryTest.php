@@ -10,14 +10,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CategoryTest extends TestCase
 {
-    public function testFillableAttributes()
+
+    private $category;
+
+    protected function  setUp(): void
     {
-        $fillable = [ 'name', 'description', 'is_active' ];
-        $category = new Category();
-        $this->assertEquals($fillable, $category->getFillable());
+        parent::setUp();
+        $this->category = new Category();
     }
 
-    public function testIfUseTraits(){
+    public function testIfUseTraits()
+    {
         $traits = [ SoftDeletes::class, Uuid::class, HasFactory::class ];
         $categoryTraits = array_keys(class_uses(Category::class));
         $this->assertEqualsCanonicalizing($traits, $categoryTraits);
@@ -26,20 +29,23 @@ class CategoryTest extends TestCase
     public function testCast()
     {
         $casts = ['id' => 'string', 'is_active' => 'boolean', 'deleted_at' => 'datetime'];
-        $category = new Category();
-        $this->assertEquals($casts, $category->getCasts());
+        $this->assertEquals($casts, $this->category->getCasts());
     }
 
     public function testIfIncrementingIsFalse()
     {
-        $category = new Category();
-        $this->assertFalse($category->incrementing);
+        $this->assertFalse($this->category->incrementing);
+    }
+
+    public function testFillableAttributes()
+    {
+        $fillable = [ 'name', 'description', 'is_active' ];
+        $this->assertEquals($fillable, $this->category->getFillable());
     }
 
     public function testDatesAttibutes()
     {
         $dates = ['deleted_at','created_at','updated_at'];
-        $category = new Category();
-        $this->assertEqualsCanonicalizing($dates, $category->getDates());
+        $this->assertEqualsCanonicalizing($dates, $this->category->getDates());
     }
 }
