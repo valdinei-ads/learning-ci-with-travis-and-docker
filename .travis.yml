@@ -44,6 +44,7 @@ script:
   - sudo chown -R $USER composer.json
   - sudo chown -R $USER composer.lock
   - docker-compose ps
+  - docker run -it micro-videos-app composer install
   # - sudo docker exec -t micro-videos-app composer install
   # - ls -l
   # - sudo docker exec -t micro-videos-app composer install
